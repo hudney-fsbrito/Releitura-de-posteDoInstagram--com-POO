@@ -58,6 +58,7 @@
   padding: 1px 15px;
   margin-right: 2px;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
 /* Conteúdo Imagem */
@@ -75,7 +76,7 @@
   margin: 5px 0 0 0;
   padding: 0;
 }
-.info {
+.post-info {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
