@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(48, 48, 48);
+}
+.icon {
+  width: 2em;
+  height: 2em;
+  padding: 0%;
+  margin: 0;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+.post-container {
+  width: 300px;
+  height: 400px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.377);
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Cabeçalho */
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.post-header .left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-header .left > div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  border: 2px solid rgb(48, 48, 48);
+}
+
+.avatar-image {
+  border-radius: 50%;
+}
+
+.textoFollow {
+  color: rgb(136, 207, 255);
+  border: 2px solid rgb(136, 207, 255);
+  border-radius: 5px;
+  padding: 1px 15px;
+  margin-right: 2px;
+  font-size: 12px;
+}
+
+/* Conteúdo Imagem */
+.imgPostagem {
+  display: block;
+  box-sizing: border-box;
+  height: 250px;
+  width: 100%;
+}
+
+/* Sessão interassão */
+.post-icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 0 0;
+  padding: 0;
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90px;
+  font-size: 12px;
+}
+
+/* Descrição */
+.post-description {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.post-description p{
+    color:  rgb(136, 207, 255);
+    padding-left: 10px;
+}
+.post-description p:first-child{
+    color: black;
+}
