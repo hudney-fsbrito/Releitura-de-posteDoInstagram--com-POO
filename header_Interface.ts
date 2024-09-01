@@ -1,3 +1,4 @@
+// Função principal para criar o cabeçalho
 export const header = () => {
   const post_header = document.createElement("div");
   post_header.classList.add("post-header");
@@ -11,6 +12,7 @@ export const header = () => {
   return post_header;
 };
 
+// Função para criar a parte esquerda do cabeçalho
 const header_left = () => {
   const left = document.createElement("div");
   left.classList.add("left");
@@ -26,6 +28,8 @@ const header_left = () => {
 
   return left;
 };
+
+// Função para criar a parte direita do cabeçalho
 const header_right = () => {
   const right = document.createElement("div");
   right.classList.add("right");

@@ -5,7 +5,7 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: rgb(48, 48, 48);
 }
-.icon {
+/* .icon {
   width: 2em;
   height: 2em;
   padding: 0%;
@@ -13,7 +13,7 @@
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-}
+} */
 .post-container {
   width: 300px;
   height: 400px;
@@ -74,7 +74,11 @@
   display: flex;
   justify-content: space-between;
   margin: 5px 0 0 0;
-  padding: 0;
+  padding: 10;
+}
+.post-icons > div:first-child  {
+  display: flex;
+  gap: 5px;
 }
 .post-info {
   display: flex;
@@ -94,6 +98,6 @@
     color:  rgb(136, 207, 255);
     padding-left: 10px;
 }
-.post-description p:first-child{
+.post-description > p:first-child{
     color: black;
 }
