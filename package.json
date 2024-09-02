@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev" : "vite",
+    "dev": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +13,5 @@
     "ts-node": "^10.9.2",
     "vite": "^5.4.2"
   },
-  "description": ""
+  "description": "Todo o html da postagem foi feito com typescript. \r Fazendo com que a estrututa se tornasse dinâmica. \r Permitindo assim, com mais eficiência, a interação com servidores e banco de dados."
 }
