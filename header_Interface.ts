@@ -20,6 +20,12 @@ const header_left = () => {
   const avatar_image = document.createElement("div");
   avatar_image.classList.add("avatar-image");
 
+  const imgAvatar = document.createElement("img");
+  imgAvatar.classList.add("imgAvatar");
+  imgAvatar.src = "./assets/ioda.jpg";
+
+  avatar_image.appendChild(imgAvatar);
+
   const span = document.createElement("span");
   span.innerText = "user_name";
 
@@ -34,9 +40,13 @@ const header_right = () => {
   const right = document.createElement("div");
   right.classList.add("right");
 
+  const containerFollow = document.createElement("div");
+  containerFollow.classList.add("containerFollow");
   const textoFollow = document.createElement("div");
   textoFollow.classList.add("textoFollow");
   textoFollow.innerText = "follow";
+  textoFollow.addEventListener("click", follow);
+  containerFollow.appendChild(textoFollow);
 
   const div = document.createElement("div");
   const i = document.createElement("i");
@@ -45,8 +55,24 @@ const header_right = () => {
   i.classList.add("fa-lg");
   div.appendChild(i);
 
-  right.appendChild(textoFollow);
+  right.appendChild(containerFollow);
   right.appendChild(div);
 
   return right;
 };
+
+let isFollow = false;
+
+function follow() {
+  isFollow = !isFollow;
+  const containerFollow = document.getElementsByClassName("containerFollow")[0];
+  const btn_follow = containerFollow.children[0];
+  console.log(btn_follow);
+  if (isFollow) {
+    btn_follow.classList.add("following");
+    btn_follow.innerHTML = "following";
+    return;
+  }
+  btn_follow.innerHTML = "follow";
+  btn_follow.classList.remove("following");
+}

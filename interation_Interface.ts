@@ -15,47 +15,110 @@ export const postIncons = () => {
   // Função para criar a parte esquerda dos ícones
   const div_left = () => {
     const left = document.createElement("div");
-  
+    const div_heart = document.createElement("div");
+    div_heart.classList.add('btn')
+    div_heart.classList.add('btn-like')
+    const div_comment= document.createElement("div");
+    div_comment.classList.add('btn')
+    const div_plane = document.createElement("div");
+    div_plane.classList.add('btn')
+    
+    
     const i_heart = document.createElement("i");
     i_heart.classList.add("fa");
     i_heart.classList.add("fa-heart-o");
     i_heart.classList.add("fa-lg");
-    i_heart.ariaHidden = "true"
-    left.appendChild(i_heart);
+    i_heart.ariaHidden = "true";
+    div_heart.appendChild(i_heart);
+
+    div_heart.addEventListener('click', like)
+    
+    left.appendChild(div_heart);
     
     const i_comment = document.createElement("i");
     i_comment.classList.add("fa");
     i_comment.classList.add("fa-comment-o");
     i_comment.classList.add("fa-lg");
     i_comment.ariaHidden = "true"
-    left.appendChild(i_comment);
+    div_comment.appendChild(i_comment);
+    left.appendChild(div_comment);
 
     const i_plane = document.createElement("i");
     i_plane.classList.add("fa");
     i_plane.classList.add("fa-paper-plane-o");
     i_plane.classList.add("fa-lg");
     i_plane.ariaHidden = "true"
-    left.appendChild(i_plane);
-  
-  
+    div_plane.appendChild(i_plane);
+    left.appendChild(div_plane);
+    
+    
     return left;
   };
   
-//   Função para criar a parte direita dos ícones
+  //   Função para criar a parte direita dos ícones
   const div_right = () => {
     const right = document.createElement("div");
     right.classList.add("right");
-
-  
+    
+    const div_bookmark = document.createElement("div");
+    div_bookmark.classList.add('btn')
+    
     const div = document.createElement("div");
     const i = document.createElement("i");
     i.classList.add("fa");
     i.classList.add("fa-bookmark-o");
     i.classList.add("fa-lg");
-    div.appendChild(i);
-  
+    div_bookmark.appendChild(i);
+    div_bookmark.classList.add('btn-save')
+
+    div_bookmark.addEventListener('click', save)
+
+    div.appendChild(div_bookmark);
+    
     right.appendChild(div);
   
     return right;
   };
   
+  let isLiked = false;
+  let isSaved = false;
+
+
+// Função para curtir a postagem - Deixa o ícone heart vermelho
+function like() {
+  isLiked = !isLiked;
+
+  const btnLike = document.getElementsByClassName("btn-like")[0];
+  const icon = btnLike.children[0];
+
+  if (isLiked) {
+    icon.classList.remove("fa-heart-o");
+    icon.classList.add("liked");
+    icon.classList.add("fa-heart");
+
+    return;
+  }
+
+  icon.classList.remove("fa-heart");
+  icon.classList.remove("liked");
+  icon.classList.add("fa-heart-o");
+}
+// Função para salvar a postagem - Deixa o ícone bookmark preto
+function save() {
+  isSaved = !isSaved;
+
+  const btnSave = document.getElementsByClassName("btn-save")[0];
+  const icon = btnSave.children[0];
+
+  if (isSaved) {
+    icon.classList.remove("fa-bookmark-o");
+    icon.classList.add("saved");
+    icon.classList.add("fa-bookmark");
+
+    return;
+  }
+
+  icon.classList.remove("fa-bookmark");
+  icon.classList.remove("saved");
+  icon.classList.add("fa-bookmark-o");
+}

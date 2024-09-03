@@ -5,7 +5,7 @@ export const imagePost = () => {
 
     const img = document.createElement('img')
     img.classList.add("imgPostagem")
-    img.src = "assets/images.jfif"
+    img.src = "./assets/pexels-starWars.jpg"
 
     div.appendChild(img)
 
