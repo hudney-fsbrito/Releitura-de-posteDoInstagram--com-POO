@@ -36,6 +36,11 @@ class Post {
     }
 
   }
+
+  henderImagePost(){
+    let image:string;
+    return image = this._imageUrl;
+  }
 }
 
 // Cria instâncias da classe Post com dados fictícios
@@ -49,13 +54,14 @@ for (let index = 0; index < 15; index++) {
   );
   posts.push(post);
 }
-
+(window as any).Post = Post;
 // console.log(posts);
-/* const firstPost = posts[0];
+const firstPost = posts[0];
 firstPost.like()
 console.log(firstPost);
 firstPost.like()
-console.log(firstPost); */
+console.log(firstPost);
+
 
 console.log(posts);
 
