@@ -1,46 +1,62 @@
+// import { randomUUID } from "node:crypto";
+import {v4 as randomUUID} from "uuid"
+import { faker } from "@faker-js/faker";
+
 class Post {
-    private _userName: string;
-    private _imageUrl: string;
-    private _descricao: string;
-    private _numLikes: number;
-    
-    constructor(userName: string,imageUrl: string,descricao: string){
-        this._userName = userName;
-        this._imageUrl = imageUrl;
-        this._descricao = descricao;
-        this._numLikes = 0;
-    }
-    
-    incrementarLike(){
-        this._numLikes += 1;
-    }
-    
-    get getUserName(){
-        return this._userName
-    }
-    
-    get getImageUrl(): string {
-        return this._imageUrl;
-    }
-    get getDescricao(): string {
-        return this._descricao;
-    }
-    set setDescricao(setDescricao: string) {
-        this._descricao = setDescricao;
+  private _id: string = randomUUID();
+
+  private _userName: string;
+  private _avatarUrl: string;
+  private _imageUrl: string;
+  private _descricao: string;
+
+  private _isLiked: boolean = false;
+  private _numberOfLive: number = 0;
+  private createDate: Date = new Date();
+
+  constructor(
+    userName: string,
+    avatarUrl: string,
+    imageUrl: string,
+    descricao: string
+  ) {
+    this._userName = userName;
+    this._avatarUrl = avatarUrl;
+    this._imageUrl = imageUrl;
+    this._descricao = descricao;
+  }
+
+  like(){
+    this._isLiked = !this._isLiked;
+
+    if (this._isLiked === true) {
+        this._numberOfLive += 1;
+    } else {
+        this._numberOfLive -= 1;
     }
 
-    get getNumLikes(): number {
-        return this._numLikes;
-    }
-    
+  }
 }
 
-const post1 = new Post('Hudney', 'http:/', 'Imagem_1')
-console.log(post1);
-const post2 = new Post('Brito', 'http:/', 'Imagem_2')
-post1.setDescricao = 'Outra descrição'
-console.log(post2);
+// Cria instâncias da classe Post com dados fictícios
+const posts: Post[] = [];
+for (let index = 0; index < 15; index++) {
+  const post = new Post(
+    faker.person.firstName(),
+    faker.image.avatarGitHub(),
+    faker.image.urlPicsumPhotos(),
+    faker.lorem.paragraph()
+  );
+  posts.push(post);
+}
 
-post1.incrementarLike()
-post1.incrementarLike()
-console.log(post1);
+// console.log(posts);
+/* const firstPost = posts[0];
+firstPost.like()
+console.log(firstPost);
+firstPost.like()
+console.log(firstPost); */
+
+console.log(posts);
+
+

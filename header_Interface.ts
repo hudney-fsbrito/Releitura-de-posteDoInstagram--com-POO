@@ -67,7 +67,6 @@ function follow() {
   isFollow = !isFollow;
   const containerFollow = document.getElementsByClassName("containerFollow")[0];
   const btn_follow = containerFollow.children[0];
-  console.log(btn_follow);
   if (isFollow) {
     btn_follow.classList.add("following");
     btn_follow.innerHTML = "following";
