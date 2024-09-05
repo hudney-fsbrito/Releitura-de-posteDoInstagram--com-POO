@@ -45,7 +45,9 @@ const header_right = () => {
   const textoFollow = document.createElement("div");
   textoFollow.classList.add("textoFollow");
   textoFollow.innerText = "follow";
-  textoFollow.addEventListener("click", follow);
+
+  textoFollow.addEventListener("click", follow);//Add um evento de click
+
   containerFollow.appendChild(textoFollow);
 
   const div = document.createElement("div");
