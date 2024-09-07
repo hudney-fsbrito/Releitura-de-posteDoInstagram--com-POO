@@ -2,6 +2,15 @@
 import {v4 as randomUUID} from "uuid"
 import { faker } from "@faker-js/faker";
 
+import { criaPosteInstagram } from "./poste_Interface";
+
+import { criaDescricao as descricao } from "./descricao_interface";
+import { header } from "./header_Interface";
+import { imagePost } from "./imagePost";
+import {criaInformacao as info } from "./informacao_do_Post";
+import { postIncons } from "./interation_Interface";
+
+
 class Post {
   private _id: string = randomUUID();
 
@@ -37,9 +46,9 @@ class Post {
 
   }
 
-  henderImagePost(){
-    let image:string;
-    return image = this._imageUrl;
+  hender(){
+    let henderPost = criaPosteInstagram(header(), imagePost(), postIncons(), info(), descricao());
+    return henderPost;
   }
 }
 
@@ -54,7 +63,6 @@ for (let index = 0; index < 15; index++) {
   );
   posts.push(post);
 }
-(window as any).Post = Post;
 // console.log(posts);
 const firstPost = posts[0];
 firstPost.like()
@@ -62,7 +70,7 @@ console.log(firstPost);
 firstPost.like()
 console.log(firstPost);
 
-
+firstPost.hender()
 console.log(posts);
 
 

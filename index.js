@@ -1,55 +1,41 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+// import { randomUUID } from "node:crypto";
+var uuid_1 = require("uuid");
+var faker_1 = require("@faker-js/faker");
 var Post = /** @class */ (function () {
-    function Post(userName, imageUrl, descricao) {
+    function Post(userName, avatarUrl, imageUrl, descricao) {
+        this._id = (0, uuid_1.v4)();
+        this._isLiked = false;
+        this._numberOfLive = 0;
+        this.createDate = new Date();
         this._userName = userName;
+        this._avatarUrl = avatarUrl;
         this._imageUrl = imageUrl;
         this._descricao = descricao;
-        this._numLikes = 0;
     }
-    Post.prototype.incrementarLike = function () {
-        this._numLikes += 1;
+    Post.prototype.like = function () {
+        this._isLiked = !this._isLiked;
+        if (this._isLiked === true) {
+            this._numberOfLive += 1;
+        }
+        else {
+            this._numberOfLive -= 1;
+        }
     };
-    Object.defineProperty(Post.prototype, "getUserName", {
-        get: function () {
-            return this._userName;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Post.prototype, "getImageUrl", {
-        get: function () {
-            return this._imageUrl;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Post.prototype, "getDescricao", {
-        get: function () {
-            return this._descricao;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Post.prototype, "setDescricao", {
-        set: function (setDescricao) {
-            this._descricao = setDescricao;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Post.prototype, "getNumLikes", {
-        get: function () {
-            return this._numLikes;
-        },
-        enumerable: false,
-        configurable: true
-    });
     return Post;
 }());
-var post1 = new Post('Hudney', 'http:/', 'Imagem_1');
-console.log(post1);
-var post2 = new Post('Brito', 'http:/', 'Imagem_2');
-post1.setDescricao = 'Outra descrição';
-console.log(post2);
-post1.incrementarLike();
-post1.incrementarLike();
-console.log(post1);
+// Cria instâncias da classe Post com dados fictícios
+var posts = [];
+for (var index = 0; index < 15; index++) {
+    var post = new Post(faker_1.faker.person.firstName(), faker_1.faker.image.avatarGitHub(), faker_1.faker.image.urlPicsumPhotos(), faker_1.faker.lorem.paragraph());
+    posts.push(post);
+}
+window.Post = Post;
+// console.log(posts);
+var firstPost = posts[0];
+firstPost.like();
+console.log(firstPost);
+firstPost.like();
+console.log(firstPost);
+console.log(posts);

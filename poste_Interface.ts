@@ -1,11 +1,7 @@
-import { criaDescricao as descricao } from "./descricao_interface";
-import { header } from "./header_Interface";
-import { imagePost } from "./imagePost";
-import {criaInformacao as info } from "./informacao_do_Post";
-import { postIncons } from "./interation_Interface";
+
 
 //Cria o container da postagem e adiciona as seções
-function criaPosteInstagram(header, postImage, postIcons, postInfo, postDescricao) {
+export function criaPosteInstagram(header, postImage, postIcons, postInfo, postDescricao) {
   //Busca o contaner principal no html
   const main = document.querySelector(".post");
   //cria o container da postagem
@@ -21,4 +17,3 @@ function criaPosteInstagram(header, postImage, postIcons, postInfo, postDescrica
   post_container.appendChild(postDescricao);
 }
 
-criaPosteInstagram(header(), imagePost(), postIncons(), info(), descricao());
