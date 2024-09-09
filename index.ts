@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 
 import { criaPosteInstagram } from "./poste_Interface";
 
-import { criaDescricao as descricao } from "./descricao_interface";
+import { criaDescricao } from "./descricao_interface";
 import { header } from "./header_Interface";
 import { imagePost } from "./imagePost";
 import {criaInformacao as info } from "./informacao_do_Post";
@@ -46,31 +46,44 @@ class Post {
 
   }
 
-  hender(){
-    let henderPost = criaPosteInstagram(header(), imagePost(), postIncons(), info(), descricao());
+  hender(
+    userName: string,
+    avatarUrl: string,
+    imageUrl: string,
+    descricao: string
+  ){
+    this._userName = userName;
+    this._avatarUrl = avatarUrl;
+    this._imageUrl = imageUrl;
+    this._descricao = descricao;
+    let henderPost = criaPosteInstagram(header(userName, avatarUrl), imagePost(imageUrl), postIncons(), info(), criaDescricao(descricao));
     return henderPost;
   }
 }
 
 // Cria instâncias da classe Post com dados fictícios
 const posts: Post[] = [];
-for (let index = 0; index < 15; index++) {
+for (let index = 0; index < 2; index++) {
   const post = new Post(
     faker.person.firstName(),
     faker.image.avatarGitHub(),
     faker.image.urlPicsumPhotos(),
     faker.lorem.paragraph()
   );
-  posts.push(post);
+  // posts.push(post);
+  post.hender( faker.person.firstName(),
+  faker.image.avatarGitHub(),
+
+  faker.image.urlPicsumPhotos(),
+  faker.lorem.paragraph())
 }
 // console.log(posts);
-const firstPost = posts[0];
-firstPost.like()
-console.log(firstPost);
-firstPost.like()
-console.log(firstPost);
+// const firstPost = posts[1];
+// firstPost.like()
+// console.log(firstPost);
+// firstPost.like()
+// console.log(firstPost);
 
-firstPost.hender()
-console.log(posts);
+// console.log(posts);
 
 

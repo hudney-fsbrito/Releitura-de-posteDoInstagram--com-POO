@@ -1,5 +1,5 @@
 // Função para criar a imagem da postagem
-export const imagePost = () => {
+export const imagePost = (imageUrl) => {
     const div = document.createElement('div')
     div.classList.add('post-image')
 
@@ -7,7 +7,7 @@ export const imagePost = () => {
 
     const img = document.createElement('img')
     img.classList.add("imgPostagem")
-    img.src = "./assets/pexels-starWars.jpg"
+    img.src = imageUrl
 
     div.appendChild(img)
 

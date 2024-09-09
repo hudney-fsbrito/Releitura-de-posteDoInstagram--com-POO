@@ -1,9 +1,9 @@
 // Função principal para criar o cabeçalho
-export const header = () => {
+export const header = (userName: string, avatar:string) => {
   const post_header = document.createElement("div");
   post_header.classList.add("post-header");
 
-  const left = header_left();
+  const left = header_left(userName, avatar);
   const right = header_right();
 
   post_header.appendChild(left);
@@ -13,7 +13,7 @@ export const header = () => {
 };
 
 // Função para criar a parte esquerda do cabeçalho
-const header_left = () => {
+const header_left = (userName: string, avatar:string) => {
   const left = document.createElement("div");
   left.classList.add("left");
 
@@ -22,12 +22,12 @@ const header_left = () => {
 
   const imgAvatar = document.createElement("img");
   imgAvatar.classList.add("imgAvatar");
-  imgAvatar.src = "./assets/ioda.jpg";
+  imgAvatar.src = avatar;
 
   avatar_image.appendChild(imgAvatar);
 
   const span = document.createElement("span");
-  span.innerText = "user_name";
+  span.innerText = userName;
 
   left.appendChild(avatar_image);
   left.appendChild(span);

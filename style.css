@@ -152,12 +152,12 @@
 .post-description {
     display: flex;
     align-items: center;
-  }
-  .post-description p{
-    color:  rgb(136, 207, 255);
-    padding-left: 10px;
+    padding: 5px;
     font-size: 12px;
+  }
+.post-description  p{
+  color: black;
 }
-.post-description > p:first-child{
-    color: black;
+.hash{
+  color:  rgb(136, 207, 255);
 }
