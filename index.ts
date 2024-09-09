@@ -1,5 +1,5 @@
 // import { randomUUID } from "node:crypto";
-import {v4 as randomUUID} from "uuid"
+import { v4 as randomUUID } from "uuid";
 import { faker } from "@faker-js/faker";
 
 import { criaPosteInstagram } from "./poste_Interface";
@@ -7,9 +7,8 @@ import { criaPosteInstagram } from "./poste_Interface";
 import { criaDescricao } from "./descricao_interface";
 import { header } from "./header_Interface";
 import { imagePost } from "./imagePost";
-import {criaInformacao as info } from "./informacao_do_Post";
+import { criaInformacao as info } from "./informacao_do_Post";
 import { postIncons } from "./interation_Interface";
-
 
 class Post {
   private _id: string = randomUUID();
@@ -35,15 +34,14 @@ class Post {
     this._descricao = descricao;
   }
 
-  like(){
+  like() {
     this._isLiked = !this._isLiked;
 
     if (this._isLiked === true) {
-        this._numberOfLive += 1;
+      this._numberOfLive += 1;
     } else {
-        this._numberOfLive -= 1;
+      this._numberOfLive -= 1;
     }
-
   }
 
   hender(
@@ -51,12 +49,19 @@ class Post {
     avatarUrl: string,
     imageUrl: string,
     descricao: string
-  ){
+  ) {
     this._userName = userName;
     this._avatarUrl = avatarUrl;
     this._imageUrl = imageUrl;
     this._descricao = descricao;
-    let henderPost = criaPosteInstagram(header(userName, avatarUrl), imagePost(imageUrl), postIncons(), info(), criaDescricao(descricao));
+    let henderPost = criaPosteInstagram(
+      header(userName, avatarUrl),
+      imagePost(imageUrl, this._id),
+      postIncons(),
+      info(),
+      criaDescricao(descricao),
+      this._id
+    );
     return henderPost;
   }
 }
@@ -70,20 +75,13 @@ for (let index = 0; index < 2; index++) {
     faker.image.urlPicsumPhotos(),
     faker.lorem.paragraph()
   );
+  post.hender(
+    faker.person.firstName(),
+    faker.image.avatarGitHub(),
+    faker.image.urlPicsumPhotos(),
+    faker.lorem.paragraph()
+  );
   // posts.push(post);
-  post.hender( faker.person.firstName(),
-  faker.image.avatarGitHub(),
-
-  faker.image.urlPicsumPhotos(),
-  faker.lorem.paragraph())
 }
-// console.log(posts);
-// const firstPost = posts[1];
-// firstPost.like()
-// console.log(firstPost);
-// firstPost.like()
-// console.log(firstPost);
 
-// console.log(posts);
-
-
+console.log(posts);

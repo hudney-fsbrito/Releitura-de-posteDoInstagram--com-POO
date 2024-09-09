@@ -1,9 +1,9 @@
 // Função para criar a imagem da postagem
-export const imagePost = (imageUrl) => {
+export const imagePost = (imageUrl, id) => {
     const div = document.createElement('div')
     div.classList.add('post-image')
 
-    div.addEventListener('click', zoomImagem)
+    div.addEventListener('click', (id) => {zoomImagem(id)})
 
     const img = document.createElement('img')
     img.classList.add("imgPostagem")
@@ -16,9 +16,9 @@ export const imagePost = (imageUrl) => {
 
 let zoom: boolean = false;
 
-function zoomImagem() {
+function zoomImagem(id) {
     zoom = !zoom
-    const divImagem = document.getElementsByClassName("post-image")[0];
+    const divImagem = document.getElementById(id);
     
     if (zoom) {
         divImagem.classList.add('post-image-zoom')
