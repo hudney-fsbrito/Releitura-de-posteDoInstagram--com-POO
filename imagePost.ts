@@ -2,8 +2,9 @@
 export const imagePost = (imageUrl, id) => {
     const div = document.createElement('div')
     div.classList.add('post-image')
-
-    div.addEventListener('click', (id) => {zoomImagem(id)})
+    console.log(id);
+    
+    div.addEventListener('click', () => {zoomImagem(id)})
 
     const img = document.createElement('img')
     img.classList.add("imgPostagem")
@@ -18,7 +19,10 @@ let zoom: boolean = false;
 
 function zoomImagem(id) {
     zoom = !zoom
-    const divImagem = document.getElementById(id);
+
+    const post = document.getElementById(id)
+    const divImagem = post?.querySelector('.post-image'); 
+    
     
     if (zoom) {
         divImagem.classList.add('post-image-zoom')
