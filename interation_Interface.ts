@@ -5,7 +5,7 @@ export const postIncons = (id, like) => {
     div_interacao.classList.add("post-icons");
     
     const left = div_left(id,like);
-    const right = div_right();
+    const right = div_right(id);
   
     div_interacao.appendChild(left);
     div_interacao.appendChild(right);
@@ -61,7 +61,7 @@ export const postIncons = (id, like) => {
   };
   
   //   Função para criar a parte direita dos ícones
-  const div_right = () => {
+  const div_right = (id) => {
     //Cria a div da direita e add classe
     const right = document.createElement("div");
     right.classList.add("right");
@@ -80,7 +80,7 @@ export const postIncons = (id, like) => {
     div_bookmark.classList.add('btn-save')
 
     //Add um evento ao ícone
-    div_bookmark.addEventListener('click', save)
+    div_bookmark.addEventListener('click',() => save(id))
 
     div.appendChild(div_bookmark);
     
@@ -89,13 +89,15 @@ export const postIncons = (id, like) => {
     return right;
   };
   
-  let isSaved = false;
+  let isSaved: boolean = false;
 
 // Função para salvar a postagem - Deixa o ícone bookmark preto
-function save() {
+function save(id) {
   isSaved = !isSaved;
 
-  const btnSave = document.getElementsByClassName("btn-save")[0];
+  const post = document.getElementById(id);
+
+  const btnSave = post?.querySelector(".btn-save");
   const icon = btnSave.children[0];
 
   if (isSaved) {
