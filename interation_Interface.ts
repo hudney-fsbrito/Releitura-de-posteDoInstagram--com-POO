@@ -1,9 +1,10 @@
+
 // Função principal para criar o ícones de interação
-export const postIncons = () => {
+export const postIncons = (id, like) => {
     const div_interacao = document.createElement("div");
     div_interacao.classList.add("post-icons");
-  
-    const left = div_left();
+    
+    const left = div_left(id,like);
     const right = div_right();
   
     div_interacao.appendChild(left);
@@ -13,13 +14,17 @@ export const postIncons = () => {
   };
   
   // Função para criar a parte esquerda dos ícones
-  const div_left = () => {
+  const div_left = (id,like) => {
+    
     const left = document.createElement("div");
+
     const div_heart = document.createElement("div");
     div_heart.classList.add('btn')
     div_heart.classList.add('btn-like')
+
     const div_comment= document.createElement("div");
     div_comment.classList.add('btn')
+    
     const div_plane = document.createElement("div");
     div_plane.classList.add('btn')
     
@@ -57,12 +62,15 @@ export const postIncons = () => {
   
   //   Função para criar a parte direita dos ícones
   const div_right = () => {
+    //Cria a div da direita e add classe
     const right = document.createElement("div");
     right.classList.add("right");
     
+    //Cria div para o ícone de salvar
     const div_bookmark = document.createElement("div");
     div_bookmark.classList.add('btn')
     
+    //Cria div e a tag de ícone para add o ícone de salvar
     const div = document.createElement("div");
     const i = document.createElement("i");
     i.classList.add("fa");
@@ -71,6 +79,7 @@ export const postIncons = () => {
     div_bookmark.appendChild(i);
     div_bookmark.classList.add('btn-save')
 
+    //Add um evento ao ícone
     div_bookmark.addEventListener('click', save)
 
     div.appendChild(div_bookmark);
@@ -80,29 +89,8 @@ export const postIncons = () => {
     return right;
   };
   
-  let isLiked = false;
   let isSaved = false;
 
-
-// Função para curtir a postagem - Deixa o ícone heart vermelho
-function like() {
-  isLiked = !isLiked;
-
-  const btnLike = document.getElementsByClassName("btn-like")[0];
-  const icon = btnLike.children[0];
-
-  if (isLiked) {
-    icon.classList.remove("fa-heart-o");
-    icon.classList.add("liked");
-    icon.classList.add("fa-heart");
-
-    return;
-  }
-
-  icon.classList.remove("fa-heart");
-  icon.classList.remove("liked");
-  icon.classList.add("fa-heart-o");
-}
 // Função para salvar a postagem - Deixa o ícone bookmark preto
 function save() {
   isSaved = !isSaved;

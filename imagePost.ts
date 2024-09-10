@@ -2,7 +2,6 @@
 export const imagePost = (imageUrl, id) => {
     const div = document.createElement('div')
     div.classList.add('post-image')
-    console.log(id);
     
     div.addEventListener('click', () => {zoomImagem(id)})
 
