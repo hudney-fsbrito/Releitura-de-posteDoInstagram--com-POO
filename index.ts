@@ -83,7 +83,7 @@ class Post {
     this._imageUrl = imageUrl;
     this._descricao = descricao;
     let henderPost = criaPosteInstagram(
-      header(userName, avatarUrl),
+      header(userName, avatarUrl, this._id),
       imagePost(imageUrl, this._id),
       postIncons(this._id, () => this.like()),
       info(),

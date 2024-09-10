@@ -1,10 +1,10 @@
 // Função principal para criar o cabeçalho
-export const header = (userName: string, avatar:string) => {
+export const header = (userName: string, avatar:string, id) => {
   const post_header = document.createElement("div");
   post_header.classList.add("post-header");
 
   const left = header_left(userName, avatar);
-  const right = header_right();
+  const right = header_right(id);
 
   post_header.appendChild(left);
   post_header.appendChild(right);
@@ -36,7 +36,7 @@ const header_left = (userName: string, avatar:string) => {
 };
 
 // Função para criar a parte direita do cabeçalho
-const header_right = () => {
+const header_right = (id) => {
   const right = document.createElement("div");
   right.classList.add("right");
 
@@ -46,7 +46,7 @@ const header_right = () => {
   textoFollow.classList.add("textoFollow");
   textoFollow.innerText = "follow";
 
-  textoFollow.addEventListener("click", follow);//Add um evento de click
+  textoFollow.addEventListener("click", () => follow(id));//Add um evento de click
 
   containerFollow.appendChild(textoFollow);
 
@@ -63,11 +63,13 @@ const header_right = () => {
   return right;
 };
 
-let isFollow = false;
+let isFollow: boolean = false;
 
-function follow() {
+function follow(id) {
   isFollow = !isFollow;
-  const containerFollow = document.getElementsByClassName("containerFollow")[0];
+
+  const post = document.getElementById(id)
+  const containerFollow = post?.querySelector(".containerFollow");
   const btn_follow = containerFollow.children[0];
   if (isFollow) {
     btn_follow.classList.add("following");
