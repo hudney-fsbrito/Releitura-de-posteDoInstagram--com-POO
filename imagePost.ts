@@ -22,10 +22,11 @@ function zoomImagem(id) {
     const post = document.getElementById(id)
     const divImagem = post?.querySelector('.post-image'); 
     
-    
-    if (zoom) {
-        divImagem.classList.add('post-image-zoom')
-        return
+    if (divImagem) {
+        if (zoom) {
+            divImagem.classList.add('post-image-zoom')
+            return
+        }
+        divImagem.classList.remove('post-image-zoom')
     }
-    divImagem.classList.remove('post-image-zoom')
 }

@@ -70,12 +70,15 @@ function follow(id) {
 
   const post = document.getElementById(id)
   const containerFollow = post?.querySelector(".containerFollow");
-  const btn_follow = containerFollow.children[0];
-  if (isFollow) {
-    btn_follow.classList.add("following");
-    btn_follow.innerHTML = "following";
-    return;
+  if (containerFollow) {
+    
+    const btn_follow = containerFollow.children[0];
+    if (isFollow) {
+      btn_follow.classList.add("following");
+      btn_follow.innerHTML = "following";
+      return;
+    }
+    btn_follow.innerHTML = "follow";
+    btn_follow.classList.remove("following");
   }
-  btn_follow.innerHTML = "follow";
-  btn_follow.classList.remove("following");
 }
