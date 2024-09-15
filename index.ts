@@ -55,6 +55,8 @@ class Post {
     }
     
     //Atualiza o DOM
+
+    //Atualiza ícone de like
     const post = document.getElementById(this._id);
     const btnLike = post?.querySelector(".btn-like");
 
@@ -65,15 +67,23 @@ class Post {
         icon.classList.remove("fa-heart-o");
         icon.classList.add("liked");
         icon.classList.add("fa-heart");
-        console.log(this._numberOfLive);
+        // console.log(this._numberOfLive);
         
       } else {
         icon.classList.remove("fa-heart");
         icon.classList.remove("liked");
         icon.classList.add("fa-heart-o");
-        console.log(this._numberOfLive);
+        // console.log(this._numberOfLive);
       }
     
+    }
+
+    //Atualiza número de like
+    const div_curtidas = post?.querySelector('.numlike')
+    if (div_curtidas) {
+
+      div_curtidas.innerHTML = this._numberOfLive.toString()
+      
     }
     
   }
@@ -97,7 +107,7 @@ class Post {
       header(userName, avatarUrl, this._id),
       imagePost(imageUrl, this._id),
       postIncons(this._id, () => this.like()),
-      info(),
+      info(this._numberOfLive, () => this.like()),
       criaDescricao(descricao),
       criaComentario(userComment, comentario),
       this._id
@@ -108,7 +118,7 @@ class Post {
 
 // Cria instâncias da classe Post com dados fictícios
 const posts: Post[] = [];
-for (let index = 0; index < 1; index++) {
+for (let index = 0; index < 15; index++) {
   const post = new Post(
     faker.person.firstName(),
     faker.image.avatarGitHub(),

@@ -19,8 +19,13 @@ export const criaComentario = (nome, comentario) => {
   const inputComment = postComment?.querySelector("#input-comment");
 
   if (btnAddComentario && inputComment) {
-    btnAddComentario.addEventListener("click", (e) => {
-      if (inputComment?.nodeValue != "") {
+    btnAddComentario.addEventListener("click", (e) => pressClick(e, inputComment));
+
+    inputComment.addEventListener("keypress", (e) => pressEnter(e, inputComment));
+  }
+
+  function pressClick(e, inputComment) {
+    if (inputComment?.nodeValue != "") {
         let comentrio = {
           comentarioNovo: inputComment.value,
           // id: gerarId(),
@@ -30,23 +35,23 @@ export const criaComentario = (nome, comentario) => {
           inputComment.value = "";
         }
       }
-    });
+  }
 
-    inputComment.addEventListener("keypress", (e) => {
-      if (inputComment?.nodeValue != "") {
-        if (e.keyCode == 13) {
-          let comentrio = {
-            comentarioNovo: inputComment.value,
-            // id: gerarId(),
-          };
-          if (comentrio.comentarioNovo) {
-            addComentario(comentrio.comentarioNovo);
-            inputComment.value = "";
-          }
+  function pressEnter(e, inputComment) {
+    if (inputComment?.nodeValue != "") {
+      if (e.keyCode == 13) {
+        let comentrio = {
+          comentarioNovo: inputComment.value,
+          // id: gerarId(),
+        };
+        if (comentrio.comentarioNovo) {
+          addComentario(comentrio.comentarioNovo);
+          inputComment.value = "";
         }
       }
-    });
+    }
   }
+
   function addComentario(comentario) {
     const ul = postComment?.querySelector(".lista-comment");
     const li = document.createElement("li");

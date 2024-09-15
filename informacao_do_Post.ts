@@ -1,5 +1,5 @@
 // Função para criar informações de quantidades de likes
-export const criaInformacao = () => {
+export const criaInformacao = (numberOfLike, like) => {
     const div = document.createElement('div');
     div.classList.add("post-info")
 
@@ -12,7 +12,10 @@ export const criaInformacao = () => {
     div_icon.appendChild(i);
 
     const div_curtidas = document.createElement('div')
-    div_curtidas.innerText = "362"
+    div_curtidas.classList.add('numlike')
+    div_curtidas.innerText = numberOfLike
+    div_curtidas.addEventListener("", () => like)
+
 
     const div_likes = document.createElement('div')
     div_likes.classList.add("post-likes")
