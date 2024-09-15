@@ -108,7 +108,7 @@ class Post {
 
 // Cria instâncias da classe Post com dados fictícios
 const posts: Post[] = [];
-for (let index = 0; index < 15; index++) {
+for (let index = 0; index < 1; index++) {
   const post = new Post(
     faker.person.firstName(),
     faker.image.avatarGitHub(),
