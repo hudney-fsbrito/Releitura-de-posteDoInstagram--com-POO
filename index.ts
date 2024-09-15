@@ -9,6 +9,7 @@ import { header } from "./header_Interface";
 import { imagePost } from "./imagePost";
 import { criaInformacao as info } from "./informacao_do_Post";
 import { postIncons } from "./interation_Interface";
+import { criaComentario } from "./comentario";
 
 class Post {
   private _id: string = randomUUID();
@@ -21,17 +22,20 @@ class Post {
   private _isLiked: boolean = false;
   private _numberOfLive: number = 0;
   private createDate: Date = new Date();
+  private _comentario: string;
 
   constructor(
     userName: string,
     avatarUrl: string,
     imageUrl: string,
-    descricao: string
+    descricao: string,
+    // comentario: string
   ) {
     this._userName = userName;
     this._avatarUrl = avatarUrl;
     this._imageUrl = imageUrl;
     this._descricao = descricao;
+    // this._comentario = comentario;
   }
 
   // Função para curtir a postagem e contabilizar curtida - Deixa o ícone heart vermelho
@@ -88,6 +92,7 @@ class Post {
       postIncons(this._id, () => this.like()),
       info(),
       criaDescricao(descricao),
+      criaComentario(),
       this._id
     );
     return henderPost;

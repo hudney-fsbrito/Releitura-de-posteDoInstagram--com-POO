@@ -164,3 +164,63 @@
 .hash{
   color:  rgb(136, 207, 255);
 }
+
+/* Comentário */
+
+.comment{
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-comment, .btn-add-comentario{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#input-comment{
+  width: 80%;
+  height: 30px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid  rgb(48, 48, 48);
+  outline: none;
+  caret-color: black;
+  font-size: 1rem;
+  color: rgb(48, 48, 48);
+}
+.btn-add-comentario{
+  height: 30px;
+  padding: 1rem;
+  border: 1px solid  rgb(48, 48, 48);
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+}
+.btn-add-comentario:active{
+  background-color: black;
+  color: white;
+}
+
+
+.lista-comment{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.user-coment{
+  font-weight: 600;
+}
+.lista-comment li{
+  align-items: center;
+  padding: 0.2rem;
+}
+.container-lista-comment{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.exclui-comment{
+  border: none;
+}
