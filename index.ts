@@ -21,21 +21,24 @@ class Post {
 
   private _isLiked: boolean = false;
   private _numberOfLive: number = 0;
-  private createDate: Date = new Date();
+  private _createDate: Date = new Date();
   private _comentario: string;
+  private _userComment:string;
 
   constructor(
     userName: string,
     avatarUrl: string,
     imageUrl: string,
     descricao: string,
-    // comentario: string
+    comentario: string,
+    userComment:string,
   ) {
     this._userName = userName;
     this._avatarUrl = avatarUrl;
     this._imageUrl = imageUrl;
     this._descricao = descricao;
-    // this._comentario = comentario;
+    this._comentario = comentario;
+    this._userComment = userComment;
   }
 
   // Função para curtir a postagem e contabilizar curtida - Deixa o ícone heart vermelho
@@ -80,19 +83,23 @@ class Post {
     userName: string,
     avatarUrl: string,
     imageUrl: string,
-    descricao: string
+    descricao: string,
+    comentario: string,
+    userComment:string,
   ) {
     this._userName = userName;
     this._avatarUrl = avatarUrl;
     this._imageUrl = imageUrl;
     this._descricao = descricao;
+    this._comentario = comentario;
+    this._userComment = userComment;
     let henderPost = criaPosteInstagram(
       header(userName, avatarUrl, this._id),
       imagePost(imageUrl, this._id),
       postIncons(this._id, () => this.like()),
       info(),
       criaDescricao(descricao),
-      criaComentario(),
+      criaComentario(userComment, comentario),
       this._id
     );
     return henderPost;
@@ -106,7 +113,9 @@ for (let index = 0; index < 15; index++) {
     faker.person.firstName(),
     faker.image.avatarGitHub(),
     faker.image.urlPicsumPhotos(),
-    faker.lorem.paragraph()
+    faker.lorem.paragraph(),
+    faker.lorem.sentence(),
+    faker.person.lastName(),
   );
   posts.push(post);
   
@@ -115,7 +124,9 @@ for (let index = 0; index < 15; index++) {
     faker.person.firstName(),
     faker.image.avatarGitHub(),
     faker.image.urlPicsumPhotos(),
-    faker.lorem.paragraph()
+    faker.lorem.slug(),
+    faker.lorem.words(),
+    faker.person.lastName(),
   );
 
 }
