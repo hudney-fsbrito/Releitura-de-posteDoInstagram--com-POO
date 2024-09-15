@@ -27,7 +27,22 @@ export const criaComentario = (nome, comentario) => {
         };
         if (comentrio.comentarioNovo) {
           addComentario(comentrio.comentarioNovo);
-          inputComment.value = ''
+          inputComment.value = "";
+        }
+      }
+    });
+
+    inputComment.addEventListener("keypress", (e) => {
+      if (inputComment?.nodeValue != "") {
+        if (e.keyCode == 13) {
+          let comentrio = {
+            comentarioNovo: inputComment.value,
+            // id: gerarId(),
+          };
+          if (comentrio.comentarioNovo) {
+            addComentario(comentrio.comentarioNovo);
+            inputComment.value = "";
+          }
         }
       }
     });
