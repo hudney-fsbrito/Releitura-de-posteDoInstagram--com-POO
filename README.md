@@ -8,8 +8,12 @@ Essa releitura implementa uma simulação de um ou mais posts do Instagram utili
 
 Esta abordagem favorece a organização e a reutilização de código.
 
-![](assets\releituraPostInsta.gif)
+<div> 
+    <img align="center" alt="Posts do Instagram"  height="300" width="500" src="assets\releituraPostInsta.gif">
+</div>
 
+
+<!-- ![](./assets/releituraPostInsta.gif) -->
 
 
 
